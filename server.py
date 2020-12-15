@@ -49,15 +49,15 @@ def main():
     handler = RequestHandler
 
     parser = argparse.ArgumentParser()
-    parser.add_argument(["-p", "--port"], type=int, default=80, dest="port", help="The port for the server")
-    parser.add_argument(["-d", "--directory"], type=str, default=".", dest="dir", help="The root directory for the server")
+    parser.add_argument("-p", "--port", type=int, default=80, dest="port", help="The port for the server")
+    parser.add_argument("-d", "--directory", type=str, default=".", dest="dir", help="The root directory for the server")
 
     args = parser.parse_args()
 
     os.chdir(args.dir)
 
-    with socketserver.TCPServer(("", args.PORT), handler) as httpd: 
-        print("serving at port", args.PORT) 
+    with socketserver.TCPServer(("", args.port), handler) as httpd: 
+        print("serving at port", args.port) 
         httpd.serve_forever()
     
 if __name__ == "__main__":
